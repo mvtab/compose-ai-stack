@@ -1,0 +1,6 @@
+---
+# Redis configuration file.
+REDIS_LOGLEVEL: 'debug'
+REDIS_SAVE: '60 1'
+...
+

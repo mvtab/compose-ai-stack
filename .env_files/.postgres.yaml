@@ -1,0 +1,6 @@
+---
+# Postgres configuration file.
+POSTGRES_USER: aistack
+POSTGRES_DB: aistack
+...
+

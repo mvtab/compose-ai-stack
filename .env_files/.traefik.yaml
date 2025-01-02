@@ -1,0 +1,26 @@
+---
+# Traefik configuration file.
+
+accessLog: {}
+api:
+  dashboard: True
+  insecure: True
+entryPoints:
+  traefik:
+    address: ":13337"
+  http:
+    address: ":80"
+  https:
+    address: ":443"
+global:
+  checkNewVersion: True
+  sendAnonymousUsage: False
+log:
+  level: INFO
+ping:
+  entryPoint: http
+providers:
+  docker:
+    exposedByDefault: False
+...
+

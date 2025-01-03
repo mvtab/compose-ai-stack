@@ -117,8 +117,8 @@ GPL V3 license.
 
 ## See also
 LocalAI - https://localai.io/  
-FlowiseAI - https://flowiseai.com/
-PostgreSQL - https://www.postgresql.org/
-Redis - https://redis.io/
-OpenSearch - https://opensearch.org/
+FlowiseAI - https://flowiseai.com/  
+PostgreSQL - https://www.postgresql.org/  
+Redis - https://redis.io/  
+OpenSearch - https://opensearch.org/  
 

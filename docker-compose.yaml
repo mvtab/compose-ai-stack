@@ -52,6 +52,29 @@ services:
     volumes:
     - ai-stack-redis-data:/data
 
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    env_file:
+    - .env_files/.opensearch.yaml
+    - .env_files/.opensearch.secrets.yaml
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?timeout=3s"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 10s
+    networks:
+    - ai-local-net
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+    - ai-stack-opensearch-data:/usr/share/opensearch/data
+
   localai:
     image: localai/localai:v2.24.2-cublas-cuda12-ffmpeg
     deploy:
@@ -84,6 +107,7 @@ services:
     - postgres
     - localai
     - redis
+    - opensearch
     entrypoint: /bin/sh -c "flowise start"
     env_file: 
     - .env_files/.flowise.yaml
@@ -105,23 +129,6 @@ services:
     - ai-local-net
     volumes:
     - ai-stack-flowise-data:/root/.flowise
-
-  opensearch:
-    image: opensearchproject/opensearch:latest
-    env_file:
-    - .env_files/.opensearch.yaml
-    - .env_files/.opensearch.secrets.yaml
-    networks:
-    - ai-local-net
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    volumes:
-    - ai-stack-opensearch-data:/usr/share/opensearch/data
 
   traefik:
     image: traefik:v3.2.3

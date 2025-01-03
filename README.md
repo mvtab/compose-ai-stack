@@ -16,6 +16,14 @@ Really just trying out AI.
 - nvidia-container-toolkit
 - nvidia drivers (tested on Arch proprietary package 'nvidia' 565.77-9)
 
+For other graphics cards see LocalAI configuration info.
+
+#### Hardware
+Aproximated:
+- 8 cores CPU,
+- 16/32 GB RAM,
+- Min. 8GB vRAM (not LHR). 
+
 ## Installation
 
 A simple demo installation can be achieved with:
@@ -92,6 +100,7 @@ In order to preload different models, change the `LOCALAI_MODELS` variable in `.
 ###### Other graphics card
 You can use LocalAI with other graphics cards. Check [this](https://localai.io/basics/container/) section for more information.
 Long story short, you have to: 
+- Install required drivers (don't forget container toolkit),
 - Change container image,
 - Change docker compose `deploy` top-level element configuration,
 - Change `BUILD_TYPE` in `.env_files/.localai.yaml` appropriately.

@@ -134,8 +134,9 @@ services:
     image: traefik:v3.2.3
     depends_on:
     - postgres
-    - localai
     - redis
+    - opensearch
+    - localai
     - flowise
     healthcheck:
       test: ["CMD", "traefik", "healthcheck"]

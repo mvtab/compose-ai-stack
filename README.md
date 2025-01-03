@@ -95,7 +95,8 @@ LocalAI container optimized for Nvidia graphics cards.
 - `.env_files/.localai.secrets.yaml`: LocalAI API key.
 
 ###### Models
-In order to preload different models, change the `LOCALAI_MODELS` variable in `.env_files/.localai.yaml`.
+In order to preload different models, change the `LOCALAI_MODELS` variable in `.env_files/.localai.yaml`.  
+You can use a huge subset of models, from huggingface to models and custom ones. More info here: https://localai.io/models/.
 
 ###### Other graphics card
 You can use LocalAI with other graphics cards. Check [this](https://localai.io/basics/container/) section for more information.
@@ -106,7 +107,7 @@ Long story short, you have to:
 - Change `BUILD_TYPE` in `.env_files/.localai.yaml` appropriately.
 
 #### Flowise
-Flowise container with PostgreSQL database and access to pgvector, redis and opensearch as tools.
+Flowise container with PostgreSQL database and access to localai, pgvector, redis and opensearch as tools.
 
 ###### Configuration files
 - `.env_files/.flowise.yaml`: General configurations,

@@ -103,6 +103,9 @@ Flowise container with PostgreSQL database and access to pgvector, redis and ope
 - `.env_files/.flowise.yaml`: General configurations,
 - `.env_files/.flowise.secrets.yaml`: Flowise password.
 
+###### Defaults
+Default username/password: `aistack/blablatester0`  
+
 ## Limitations
 - OpenSearch still needs authentication,
 - PostgreSQL pgvector seems not to work very well with some flowise flows.

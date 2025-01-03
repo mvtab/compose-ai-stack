@@ -96,7 +96,7 @@ LocalAI container optimized for Nvidia graphics cards.
 
 ###### Models
 In order to preload different models, change the `LOCALAI_MODELS` variable in `.env_files/.localai.yaml`.  
-You can use a huge subset of models, from huggingface to models and custom ones. More info here: https://localai.io/models/.
+You can use a huge subset of models, from huggingface to ollama and custom ones. More info here: https://localai.io/models/.
 
 ###### Other graphics card
 You can use LocalAI with other graphics cards. Check [this](https://localai.io/basics/container/) section for more information.

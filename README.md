@@ -106,6 +106,21 @@ Flowise container with PostgreSQL database and access to pgvector, redis and ope
 ###### Defaults
 Default username/password: `aistack/blablatester0`  
 
+#### Traefik
+Simple Traefik container for exposing services in the stack. Configured for localhost.  
+
+###### Configuration files
+- `.env_files/.traefik.yaml`: Static configurations,
+- docker container labels: separate host configurations.
+
+###### x.localhost
+The setup makes use of `x.localhost` addresses to avoid having to change `/etc/hosts`.  
+This does not work in a corporate proxy environment. If affected, change the addresses to a legit TLD and edit `/etc/hosts`. 
+
+###### Exposed services
+- FlowiseAI, http, `flowise.localhost`,
+- LocalAI, http, `localai.localhost`.
+
 ## Limitations
 - OpenSearch still needs authentication,
 - PostgreSQL pgvector seems not to work very well with some flowise flows.

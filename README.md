@@ -51,6 +51,58 @@ It should be easy to add any other containers and use them from flowise without
 actually exposing them to the host. The latter is then achieveable by adding two
 labels for Traefik. 
 
+#### PostgreSQL
+The PostgreSQL container uses a version with pgvector enabled. (pgvector/pgvector)  
+
+###### Configuration files
+- `.env_files/.postgres.yaml`: General configurations,
+- `.env_files/.postgres.secrets.yaml`: `POSTGRES_PASSWORD`, aswell as an alias `DATABASE_PASSWORD` for Flowise (Secret gets mounted into the Flowise container aswell),
+- `.env_files/.postgres.init.sql`: `vector` extension initialization. 
+
+###### Defaults
+Default username/password: `aistack/blablatester1`  
+Default db: `aistack`  
+
+#### Redis
+Simple redis installation, kept minimal.  
+
+###### Configuration files
+- `.env_files/.redis.yaml`: General configurations,
+- `.env_files/.redis.secrets.yaml`: Redis password.
+
+###### Defaults
+Default username/password: `default/blablatester2`
+
+#### OpenSearch
+Simple OpenSearch installation, kept minimal. Authentication still missing.  
+
+###### Configuration files
+- `.env_files/.opensearch.yaml`: General configurations.
+
+#### LocalAI
+LocalAI container optimized for Nvidia graphics cards.  
+
+###### Configuration files
+- `.env_files/.localai.yaml`: General configurations,
+- `.env_files/.localai.secrets.yaml`: LocalAI API key.
+
+###### Models
+In order to preload different models, change the `LOCALAI_MODELS` variable in `.env_files/.localai.yaml`.
+
+###### Other graphics card
+You can use LocalAI with other graphics cards. Check [this](https://localai.io/basics/container/) section for more information.
+Long story short, you have to: 
+- Change container image,
+- Change docker compose `deploy` top-level element configuration,
+- Change `BUILD_TYPE` in `.env_files/.localai.yaml` appropriately.
+
+#### Flowise
+Flowise container with PostgreSQL database and access to pgvector, redis and opensearch as tools.
+
+###### Configuration files
+- `.env_files/.flowise.yaml`: General configurations,
+- `.env_files/.flowise.secrets.yaml`: Flowise password.
+
 ## Limitations
 - OpenSearch still needs authentication,
 - PostgreSQL pgvector seems not to work very well with some flowise flows.
@@ -59,4 +111,11 @@ labels for Traefik.
 ## Disclaimer
 Made for fun, to explore. A lot of security aspects have been completely ignored.  
 GPL V3 license.
+
+## See also
+LocalAI - https://localai.io/  
+FlowiseAI - https://flowiseai.com/
+PostgreSQL - https://www.postgresql.org/
+Redis - https://redis.io/
+OpenSearch - https://opensearch.org/
 
